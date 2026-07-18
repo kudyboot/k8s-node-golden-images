@@ -1,5 +1,5 @@
 terraform {
     backend "local" {
-        path = "/opt/terraform/states/moj-projekt.tfstate"
+        path = "/opt/terraform/states/k8s-node-golden-images.tfstate"
     }
 }
