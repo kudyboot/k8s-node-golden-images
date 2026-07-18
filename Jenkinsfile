@@ -1,26 +1,17 @@
 pipeline {
-    agent any
-
+    agent {
+        label 'terraform-executor'
+    }
     stages {
-        stage('terraform check version') {
+        stage('Terraform Init') {
+            steps {
+                sh 'terraform version'
+            }
+        }
+        stage('Init') {
             steps {
                 sh 'pwd'
-                sh 'terraform --version'
-            }
-        }
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                sh 'ls -al'
             }
         }
     }
