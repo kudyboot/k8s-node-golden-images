@@ -10,7 +10,8 @@ terraform {
 provider "proxmox" {
   endpoint = "https://192.168.1.10:8006"
 
-  api_token = var.proxmox_api_token
+  username = var.proxmox_user
+  password = var.proxmox_password
   # because self-signed TLS certificate is in use
   insecure = true
 }

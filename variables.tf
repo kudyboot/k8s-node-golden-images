@@ -1,4 +1,8 @@
-variable "proxmox_api_token" {
+variable "proxmox_user" {
+  type = string
+}
+
+variable "proxmox_password" {
   type = string
 }
 

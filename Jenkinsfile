@@ -26,12 +26,8 @@ pipeline {
             }
             steps {
                 script {
-                    withCredentials([
-                        string(
-                            credentialsId: 'proxmox-token',
-                            variable: 'TF_VAR_proxmox_api_token'
-                        )
-                    ]){
+                    withCredentials([usernamePassword(credentialsId: 'proxmox', usernameVariable: 'TF_VAR_proxmox_user', passwordVariable: 'TF_VAR_proxmox_password')])
+                    {
                         def exitCode = sh(script: 'terraform plan -detailed-exitcode -out=tfplan', returnStatus: true)
                         if (exitCode == 0) {
                             echo "No changes detected. Skipping Apply."
